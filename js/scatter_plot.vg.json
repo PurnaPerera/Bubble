@@ -2,28 +2,36 @@
  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
  "width": 500,
  "height": 400,
- "title": "COVID-19 Cases per Country (13 Oct 2020)",
+ "title": "LexTALE Test Results",
  "data": {
- "url": "https://raw.githubusercontent.com/PurnaPerera/Bubble/main/data/COVID_19_10_Oct_2020.csv"
+     "url": "https://raw.githubusercontent.com/PurnaPerera/Bubble/main/data/BEST.csv"
  },
+ "transform": [
+ {"filter": "datum.LEXTALES > 70"}
+ ],
  "mark": "circle",
  "encoding": {
  "x": {
- "field": "Confirmed",
+ "field": "LEXTALES",
  "type": "quantitative",
- "title": "Confirmed Cases"
+ "scale": {"domain":[70,100]},
+ "title":"Spanish" 
  },
  "y": {
- "field": "Deaths",
- "type": "quantitative"
+ "field": "LEXTALEB",
+ "type": "quantitative",
+ "scale": {"domain":[45,100]},
+ "title":"Basque"
  },
  "color": {
- "field": "Continent",
- "type": "nominal"
+ "field": "LEXTALEE",
+ "type": "quantitative",
+ "scale": {"type":"threshold", "domain":[70],"range":["#ADD8E6","#CD5C5C"]},
+ "title":"English"
  },
- "size": {
- "field": "Population",
- "type": "quantitative"
- }
+ "tooltip": [
+ {"field": "LEXTALES", "type": "quantitative", "title":"Spanish"},
+ {"field": "LEXTALEB", "type": "quantitative", "title":"Basque"},
+ {"field": "LEXTALEE", "type": "quantitative", "title":"English"}]
  }
 }
