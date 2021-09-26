@@ -6,8 +6,28 @@
  "data": {
      "url": "https://raw.githubusercontent.com/PurnaPerera/Bubble/main/data/BEST.csv"
  },
+ "params": [
+ {
+ "name": "Subject_background",
+ "bind": {
+ "input": "select",
+ "options": [
+ null,
+ "Native Bilinguals",
+ "Native Monolinguals"
+ ],
+ "labels":[
+ "Show All",
+ "Native Bilinguals",
+ "Native Monolinguals"
+ ],
+ "name": "Subject Background: "
+ }
+ }
+ ],
  "transform": [
- {"filter": "datum.LEXTALES > 70"}
+ {"filter": "datum.LEXTALES > 70"},
+ {"filter":{"or":["Subject_background == null", {"and":["datum.AGEOFACQUISITIONSPANISH<3", "datum.AGEOFACQUISITIONBASQUE<3", "Subject_background == 'Native Bilinguals'"]},{"and":["datum.AGEOFACQUISITIONSPANISH>2 || datum.AGEOFACQUISITIONBASQUE>2", "Subject_background == 'Native Monolinguals'"]}]}}
  ],
  "mark": "circle",
  "encoding": {
