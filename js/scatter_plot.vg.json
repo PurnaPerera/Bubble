@@ -28,7 +28,7 @@
  "transform": [
  {"filter": "datum.LEXTALES > 70"},
  {"filter":{"or":["Subject_background == null", {"and":["datum.AGEOFACQUISITIONSPANISH<3", "datum.AGEOFACQUISITIONBASQUE<3", "Subject_background == 'Native Bilinguals'"]},{"and":["datum.AGEOFACQUISITIONSPANISH>2 || datum.AGEOFACQUISITIONBASQUE>2", "Subject_background == 'Native Monolinguals'"]}]}}
- ],
+ ], "layer":[{
  "mark": "circle",
  "encoding": {
  "x": {
@@ -53,5 +53,14 @@
  {"field": "LEXTALES", "type": "quantitative", "title":"Spanish"},
  {"field": "LEXTALEB", "type": "quantitative", "title":"Basque"},
  {"field": "LEXTALEE", "type": "quantitative", "title":"English"}]
- }
+ }}, 
+ {"mark": {
+          "type": "text",
+          "align": "center",
+          "x": 120,
+          "y":350,
+          "lineBreak":"\n",
+          "fill":"#808080",
+          "text": "Subjects are classified as native \n bilinguals if they acquired both Spanish and \n Basque before the age of 3. Otherwise they're \n classifed as native monolinguals."
+        }}]
 }
