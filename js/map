@@ -1,0 +1,35 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Week 9 Homework: Percentage of test subjects from each region",
+  "width": 800,
+  "height": 600,
+  "projection": {"type": "equirectangular"},
+  "layer":[{"data": {
+    "url": "https://raw.githubusercontent.com/PurnaPerera/Map/main/js/ESP_adm2.json",
+    "format": {"type": "topojson", "feature": "ESP_adm2-1"}
+  },
+  "transform": [
+    {
+      "lookup": "properties.NAME_2",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/PurnaPerera/Map/main/data/study.csv"
+        },
+        "key": "Region",
+        "fields": ["Percentage"]
+      }
+    }
+  ],
+  "mark": {"type": "geoshape","stroke": "black"},
+  "encoding": {
+    "color": {
+      "field": "Percentage",
+      "type": "quantitative",
+      "scale": {"type": "log"}
+    },
+    "tooltip": [
+      {"field": "properties.NAME_2", "type": "nominal", "title": "Region"},
+      {"field": "Percentage", "type": "nominal"}
+    ]
+  }}]  
+}
